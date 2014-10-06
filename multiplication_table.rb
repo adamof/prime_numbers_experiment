@@ -3,12 +3,14 @@ class MultiplicationTable
     @numbers = numbers
   end
 
-  def print
-    puts table_header
+  def to_s
+    string = "#{table_header}\n"
 
     @numbers.each do |number|
-      puts table_row(number)
+      string << "#{table_row(number)}\n"
     end
+
+    string
   end
 
   private
