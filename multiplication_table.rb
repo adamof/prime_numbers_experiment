@@ -10,13 +10,22 @@ class MultiplicationTable
   private
 
   def table_header(numbers)
-    header = "\t| "
-    header << numbers.join("\t")
-    header << "\n#{"-" * header.length * 3}"
+    header = '|'.rjust(8)
+
+    numbers.each do |number|
+      header << number.to_s.rjust(8)
+    end
+
+    header << "\n#{"-" * header.length}"
   end
 
   def table_row(numbers, index)
-    row = "#{numbers[index]}\t| "
-    row << numbers.map { |number| number * numbers[index] }.join("\t")
+    row = "#{numbers[index]} |".rjust(8)
+
+    numbers.each do |number|
+      row << (number * numbers[index]).to_s.rjust(8)
+    end
+
+    row
   end
 end
