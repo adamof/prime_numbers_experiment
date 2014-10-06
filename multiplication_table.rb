@@ -1,29 +1,33 @@
 class MultiplicationTable
-  def print(numbers)
-    puts table_header(numbers)
+  def initialize(numbers)
+    @numbers = numbers
+  end
 
-    numbers.each_with_index do |_, index|
-      puts table_row(numbers, index)
+  def print
+    puts table_header
+
+    @numbers.each do |number|
+      puts table_row(number)
     end
   end
 
   private
 
-  def table_header(numbers)
+  def table_header
     header = '|'.rjust(8)
 
-    numbers.each do |number|
+    @numbers.each do |number|
       header << number.to_s.rjust(8)
     end
 
     header << "\n#{"-" * header.length}"
   end
 
-  def table_row(numbers, index)
-    row = "#{numbers[index]} |".rjust(8)
+  def table_row(current_number)
+    row = "#{current_number} |".rjust(8)
 
-    numbers.each do |number|
-      row << (number * numbers[index]).to_s.rjust(8)
+    @numbers.each do |number|
+      row << (number * current_number).to_s.rjust(8)
     end
 
     row

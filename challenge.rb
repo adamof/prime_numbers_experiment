@@ -1,4 +1,5 @@
 require './primes_generator'
 require './multiplication_table'
 
-MultiplicationTable.new.print(PrimesGenerator.first(10))
+numbers = PrimesGenerator.first(10)
+MultiplicationTable.new(numbers).print
