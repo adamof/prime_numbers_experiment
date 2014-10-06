@@ -1,4 +1,13 @@
 class Challenge
+  def run
+    numbers = prime_numbers needed_count: 10
+    puts table_header(numbers)
+
+    numbers.each_with_index do |_, index|
+      puts table_row(numbers, index)
+    end
+  end
+
   def prime_numbers(needed_count: 10)
     return [] unless needed_count > 0
 
@@ -15,6 +24,17 @@ class Challenge
 
   private
 
+  def table_header(numbers)
+    header = "\t| "
+    header << numbers.join("\t")
+    header << "\n#{"-" * header.length * 3}"
+  end
+
+  def table_row(numbers, index)
+    row = "#{numbers[index]}\t| "
+    row << numbers.map { |number| number * numbers[index] }.join("\t")
+  end
+
   def is_prime?(candidate_number, prime_numbers)
     sqrt_candidate_number = candidate_number**0.5
 
@@ -24,3 +44,5 @@ class Challenge
     end
   end
 end
+
+Challenge.new.run
